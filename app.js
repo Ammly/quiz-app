@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+app.get('/quiz', (req, res) => {
+    res.render('quizRoom');
+})
+
 
 // Define the port number
 const PORT = 5000;
