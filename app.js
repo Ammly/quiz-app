@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
 app.get('/quiz', (req, res) => {
     res.render('quizRoom');
 })
+app.get('/result', (req, res) => {
+    res.render('result');
+})
 
 
 // Define the port number
