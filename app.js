@@ -53,7 +53,15 @@ app.post('/create-quiz', (req, res) => {
     })
     questions.save().then(response => {
         console.log(response);
-    }).catch(err => console.log(err));
+        res.render('create-quiz', {
+            response: response
+        });
+    }).catch(err => {
+        console.log(err)
+        res.render('create-quiz', {
+            error: err
+        });
+    });
 })
 
 // Connecting to the Database
