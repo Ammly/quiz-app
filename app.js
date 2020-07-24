@@ -26,17 +26,34 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     Topic.find({}, 'name').exec().then(topics => {
         console.log(topics);
-        res.render('index', {
+        res.status(200).render('index', {
             topics: topics
         });
     }).catch(err => {
-        console.log(err)
+        console.log(err => {
+            res.status(500).json({
+                err: err
+            });
+        })
     });
 })
 
-app.get('/quiz', (req, res) => {
-    // Store result
-    res.render('quizRoom');
+app.get('/quiz/:id', (req, res) => {
+    quiz.find({
+        topic: req.params.id
+    }, (error, db_questions) => {
+        if (error) {
+            console.log(error)
+            res.status(500).json({
+                error: error
+            });
+        } else {
+            console.log(db_questions)
+            res.status(200).render('quizRoom', {
+                db_questions: db_questions
+            })
+        }
+    })
 })
 
 
@@ -57,13 +74,17 @@ app.post('/create-topic', (req, res) => {
     })
     questions.save().then(response => {
         console.log(response);
-        res.render('create-topic', {
+        res.status(200).render('create-topic', {
             response: response
         });
     }).catch(err => {
-        console.log(err)
+        console.log(err => {
+            res.status(500).json({
+                err: err
+            });
+        })
         res.render('create-topic', {
-            error: err
+            err: err
         });
     });
 })
@@ -72,11 +93,15 @@ app.post('/create-topic', (req, res) => {
 app.get('/create-quiz', (req, res) => {
     Topic.find({}, 'name').exec().then(topics => {
         console.log(topics);
-        res.render('create-quiz', {
+        res.status(200).render('create-quiz', {
             topics: topics
         });
     }).catch(err => {
-        console.log(err)
+        console.log(err => {
+            res.status(500).json({
+                err: err
+            });
+        })
     });
     // res.render('create-quiz');
 })
@@ -94,11 +119,15 @@ app.post('/create-quiz', (req, res) => {
     })
     questions.save().then(response => {
         console.log(response);
-        res.render('create-quiz', {
+        res.status(200).render('create-quiz', {
             response: response
         });
     }).catch(err => {
-        console.log(err)
+        console.log(err => {
+            res.status(500).json({
+                err: err
+            });
+        })
         res.render('create-quiz', {
             error: err
         });

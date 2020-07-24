@@ -1,39 +1,11 @@
-// Import express package
-const express = require('express');
-const quiz = require('./models/quiz');
-const Topic = require('./models/topic');
-const bodyParser = require('body-parser');
+// Code here
 
-var url_string = window.location.href;
-var url = new URL(url_string);
-var topic = url.searchParams.get("topic");
-alert("You have selected " + topic + " topic. Good luck");
+// var url_string = window.location.href;
+// var url = new URL(url_string);
+// var topic = url.searchParams.get("topic");
+// alert("You have selected " + topic + " topic. Good luck");
 
-// Initialize express
-const app = express();
-const mongoose = require('mongoose');
-
-app.use(express.json()); // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
-
-app.use(bodyParser.json()); // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
-    extended: true
-}));
-
-// find questions
-let questions = [];
-
-quiz.find({
-    topic: req.params.id
-}).then(questions => {
-    console.log(questions);
-    question.append(questions);
-}).catch(err => {
-    console.log(err)
-});
-
-
+let questions = JSON.parse(db_questions);
 
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
