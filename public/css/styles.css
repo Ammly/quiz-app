@@ -76,7 +76,7 @@
   }
   
   /* BUTTONS */
-  .btn {
+  .nextQuestion {
     font-size: 1.8rem;
     padding: 1rem 0;
     width: 20rem;
@@ -88,14 +88,14 @@
     background-color: white;
   }
   
-  .btn:hover {
+  .nextQuestion:hover {
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
     transform: translateY(-0.1rem);
     transition: transform 150ms;
   }
   
-  .btn[disabled]:hover {
+  .nextQuestion[disabled]:hover {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
@@ -125,6 +125,10 @@
   .choice-text {
     padding: 1.5rem;
     width: 100%;
+  }
+
+  .selectedAnswer {
+    background-color: #f7a051;
   }
   
   .correct {
