@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head') -%>
+       <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<html>
+
+    <body>
+        <%- include('partials/header') -%>
+        <main role="main">
+
+            <section class="topics py-5 bg-light">
+                <div class="container">
+                    <h2> Quiz Results: <strong><span id="resultInPercent"></span>%</strong></h2>
+                    <div class="text-center" >
+                        <div id="pass">
+                            <h3>Congratulations!</h3>
+                        </div>
+                        <div id="fail">
+                            <h3>You can try again later</h3>
+                        </div>
+                        <p>You got <span id="passedQuestions"></span> out of <span id="totalQuestions"></span> </p>
+                        <button class="btn btn-primary">Check your answers</button>
+                        <button class="btn btn-secondary">Try again</button>
+                        <a href="/">
+                        <button class="btn btn-success">Back to Quizzes</button></a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <%- include('partials/footer') -%>
+        <script src="/js/results.js"></script>
+    </body>
+
+</html>
