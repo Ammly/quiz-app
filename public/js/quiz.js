@@ -10,6 +10,7 @@ let questions = [
         choice1: "Ones",
         choice2: "Tenth",
         choice3: "Hundreds",
+        choice4:"Thousand",
         answer: 2
     },
     {
@@ -17,6 +18,7 @@ let questions = [
         choice1: "60",
         choice2: "600",
         choice3: "6",
+        choice4:"6000",
         answer: 3
     },
     {
@@ -24,6 +26,7 @@ let questions = [
         choice1: "4",
         choice2: "6",
         choice3: "3",
+        choice4:"5",
         answer: 1
     },
     {
@@ -31,6 +34,7 @@ let questions = [
         choice1: "88",
         choice2: "112",
         choice3: "96",
+        choice4:"97",
         answer: 3
     },
     {
@@ -38,6 +42,7 @@ let questions = [
         choice1: "Thousands",
         choice2: "Hundreds",
         choice3: "Ones",
+        choice4:"Tens",
         answer: 2
     }
 ];
