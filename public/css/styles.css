@@ -138,3 +138,9 @@
   .incorrect {
     background-color: #dc3545;
   }
+
+  /* Results page */
+
+  #pass, #fail {
+    display: none;
+  }

@@ -33,6 +33,7 @@ let questions = [{
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 
+let finishQuiz = false;
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -43,7 +44,8 @@ let wrongAnswerHolder = [];
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = questions.length;
+localStorage.setItem("totalQuestions", MAX_QUESTIONS);
 
 startGame = () => {
     questionCounter = 0;
@@ -56,19 +58,21 @@ getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //go to the end page
         return window.location.assign("/result");
+    } else {
+        questionCounter++;
+        const questionIndex = Math.floor(Math.random() * availableQuesions.length);
+        currentQuestion = availableQuesions[questionIndex];
+        question.innerText = currentQuestion.question;
+
+        choices.forEach(choice => {
+            const number = choice.dataset["number"];
+            choice.innerText = currentQuestion["choice" + number];
+        });
+
+        availableQuesions.splice(questionIndex, 1);
+        acceptingAnswers = true;
     }
-    questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuesions.length);
-    currentQuestion = availableQuesions[questionIndex];
-    question.innerText = currentQuestion.question;
 
-    choices.forEach(choice => {
-        const number = choice.dataset["number"];
-        choice.innerText = currentQuestion["choice" + number];
-    });
-
-    availableQuesions.splice(questionIndex, 1);
-    acceptingAnswers = true;
 };
 
 choices.forEach(choice => {
@@ -80,13 +84,18 @@ choices.forEach(choice => {
         selectedChoice.parentElement.classList.add("selectedAnswer");
         const selectedAnswer = selectedChoice.dataset["number"];
 
-        selectedAnswer == currentQuestion.answer ? correctAnswerCounter++ : wrongAnswerHolder.push(currentQuestion.question);
-
+        if (selectedAnswer == currentQuestion.answer) {
+            correctAnswerCounter++;
+            localStorage.setItem("passed", correctAnswerCounter);
+        } else {
+            wrongAnswerHolder.push(currentQuestion.question);
+            localStorage.setItem("passed", correctAnswerCounter);
+            localStorage.setItem("failedQuestions", wrongAnswerHolder);
+        }
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove("selectedAnswer");
             getNewQuestion();
         }, 1000);
     });
 });
-
 startGame();
