@@ -23,8 +23,14 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    // fetch topics
-    res.render('index');
+    quiz.find({}, 'topic').exec().then(topic => {
+        console.log(topic)
+        res.render('index', {
+            topic: topic
+        });
+    }).catch(err => {
+        console.log(err)
+    });
 })
 
 app.get('/quiz', (req, res) => {

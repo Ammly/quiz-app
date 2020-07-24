@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // create a schema for our database
 var QuestionsSchema = new Schema({
-    _id: mongoose.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     topic: String,
     question: String,
     choice1: String,
