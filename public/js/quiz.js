@@ -8,12 +8,12 @@ let questions = [
     {
         question: "What is the digit value of 3 in 567.3",
         choice1: "Ones",
-        choice2: "Tenths",
+        choice2: "Tenth",
         choice3: "Hundreds",
         answer: 2
     },
     {
-        question: "What is the total value of 6 in 3686?",
+        question: "What is the total value of 6 in 3986?",
         choice1: "60",
         choice2: "600",
         choice3: "6",
@@ -36,7 +36,7 @@ let questions = [
     {
         question: "What is the placevalue of 3 in 7345?",
         choice1: "Thousands",
-        choice2: "Hundlreds",
+        choice2: "Hundreds",
         choice3: "Ones",
         answer: 2
     }
