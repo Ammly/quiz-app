@@ -4,6 +4,7 @@ const express = require('express');
 
 // Initialize express
 const app = express();
+const mongoose = require('mongoose');
 
 // Set up a view engine
 app.set('view engine', 'ejs');
@@ -21,6 +22,23 @@ app.get('/quiz', (req, res) => {
 })
 app.get('/result', (req, res) => {
     res.render('result');
+})
+
+
+// Connecting to the Database
+let mongodb_url = 'mongodb://localhost:27017/';
+let dbName = 'quizApp';
+mongoose.connect(mongodb_url + dbName, )
+let db = mongoose.connection;
+
+// Check Connection
+db.once('open', () => {
+    console.log('Database connected successfully')
+})
+
+// Check for DB Errors
+db.on('error', (error) => {
+    console.log(error);
 })
 
 
