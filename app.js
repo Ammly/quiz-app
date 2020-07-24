@@ -26,9 +26,12 @@ app.get('/result', (req, res) => {
 
 
 // Connecting to the Database
-let mongodb_url = 'mongodb://localhost:27017/';
+let mongodb_url = 'mongodb+srv://quizApp:quizApp@cluster0.bdbrc.mongodb.net/quizApp?retryWrites=true&w=majority';
 let dbName = 'quizApp';
-mongoose.connect(mongodb_url + dbName, )
+mongoose.connect(mongodb_url + dbName, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
 let db = mongoose.connection;
 
 // Check Connection
