@@ -1,6 +1,7 @@
 // Import express package
 const express = require('express');
 const quiz = require('./models/quiz');
+const Topic = require('./models/topic');
 const bodyParser = require('body-parser');
 
 
@@ -23,10 +24,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    quiz.find({}, 'topic').exec().then(topic => {
-        console.log(topic)
+    Topic.find({}, 'name').exec().then(topics => {
+        console.log(topics);
         res.render('index', {
-            topic: topic
+            topics: topics
         });
     }).catch(err => {
         console.log(err)
@@ -42,8 +43,40 @@ app.get('/result', (req, res) => {
     res.render('result');
 })
 
+// Create topic
+app.get('/create-topic', (req, res) => {
+    res.render('create-topic');
+})
+app.post('/create-topic', (req, res) => {
+    const questions = new Topic({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.topic
+
+    })
+    questions.save().then(response => {
+        console.log(response);
+        res.render('create-topic', {
+            response: response
+        });
+    }).catch(err => {
+        console.log(err)
+        res.render('create-topic', {
+            error: err
+        });
+    });
+})
+
+// Create Quiz
 app.get('/create-quiz', (req, res) => {
-    res.render('create-quiz');
+    Topic.find({}, 'name').exec().then(topics => {
+        console.log(topics);
+        res.render('create-quiz', {
+            topics: topics
+        });
+    }).catch(err => {
+        console.log(err)
+    });
+    // res.render('create-quiz');
 })
 app.post('/create-quiz', (req, res) => {
     const questions = new quiz({
