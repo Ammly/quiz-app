@@ -34,10 +34,23 @@ app.get('/', (req, res) => {
     });
 })
 
-app.get('/quiz', (req, res) => {
-    // fetch quiz by selected topic
-    res.render('quizRoom');
+
+app.get('/quiz/:id', (req, res) => {
+    quiz.find({
+        topic: req.params.id
+    }).then(questions => {
+        console.log(questions);
+        res.render('quizRoom', {
+            questions: questions
+        });
+    }).catch(err => {
+        console.log(err)
+        res.render('quizRoom', {
+            err: err
+        });
+    });
 })
+
 app.get('/result', (req, res) => {
     // Store result
     res.render('result');

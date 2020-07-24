@@ -1,7 +1,7 @@
 var url_string = window.location.href;
 var url = new URL(url_string);
 var topic = url.searchParams.get("topic");
-alert("You have selected " + topic + " topic. Good luck");
+// alert("You have selected " + topic + " topic. Good luck");
 
 // Fetch the correct set of questions
 let questions = [
