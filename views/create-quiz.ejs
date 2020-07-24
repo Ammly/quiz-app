@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head') -%>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<html>
+
+<body>
+    <%- include('partials/header') -%>
+    <main role="main">
+
+        <section class="topics py-5 bg-light">
+            <div class="container">
+                <form action="/create-quiz" method="POST">
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <input class="form-control" type="text" name="topic" id="topic" value="Maths">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Question</label>
+                        <input class="form-control" type="text" name="question" id="question"
+                            value="What is the digit value of 3 in 567.3">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Choice 1</label>
+                        <input class="form-control" type="text" name="choice1" id="choice1" value="Ones">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Choice 2</label>
+                        <input class="form-control" type="text" name="choice2" id="choice2" value="Tenth">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Choice 3</label>
+                        <input class="form-control" type="text" name="choice3" id="choice3" value="Hundreds">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Choice 4</label>
+                        <input class="form-control" type="text" name="choice4" id="choice4" value="Thousand">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Answer</label>
+                        <input class="form-control" type="number" name="answer" id="answer" value="2">
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-success" type="submit">Save</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <%- include('partials/footer') -%>
+    <script src="/js/results.js"></script>
+</body>
+
+</html>
