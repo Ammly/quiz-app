@@ -4,30 +4,42 @@ var topic = url.searchParams.get("topic");
 alert("You have selected " + topic + " topic. Good luck");
 
 // Fetch the correct set of questions
-let questions = [{
-    question: "Inside which HTML element do we put the JavaScript??",
-    choice1: "<script>",
-    choice2: "<javascript>",
-    choice3: "<js>",
-    choice4: "<scripting>",
-    answer: 1
-},
-{
-    question: "What is the correct syntax for referring to an external script called 'xxx.js'?",
-    choice1: "<script href='xxx.js'>",
-    choice2: "<script name='xxx.js'>",
-    choice3: "<script src='xxx.js'>",
-    choice4: "<script file='xxx.js'>",
-    answer: 3
-},
-{
-    question: " How do you write 'Hello World' in an alert box?",
-    choice1: "msgBox('Hello World');",
-    choice2: "alertBox('Hello World');",
-    choice3: "msg('Hello World');",
-    choice4: "alert('Hello World');",
-    answer: 4
-}
+let questions = [
+    {
+        question: "What is the digit value of 3 in 567.3",
+        choice1: "Ones",
+        choice2: "Tenths",
+        choice3: "Hundreds",
+        answer: 2
+    },
+    {
+        question: "What is the total value of 6 in 3686?",
+        choice1: "60",
+        choice2: "600",
+        choice3: "6",
+        answer: 3
+    },
+    {
+        question: "What is 160 / 40?",
+        choice1: "4",
+        choice2: "6",
+        choice3: "3",
+        answer: 1
+    },
+    {
+        question: "What is 8 x 12?",
+        choice1: "88",
+        choice2: "112",
+        choice3: "96",
+        answer: 3
+    },
+    {
+        question: "What is the placevalue of 3 in 7345?",
+        choice1: "Thousands",
+        choice2: "Hundlreds",
+        choice3: "Ones",
+        answer: 2
+    }
 ];
 
 const question = document.getElementById("question");
@@ -60,6 +72,8 @@ getNewQuestion = () => {
         return window.location.assign("/result");
     } else {
         questionCounter++;
+        document.getElementById("currentExamQuestion").textContent = questionCounter;
+        document.getElementById("totalExamQuestions").textContent = MAX_QUESTIONS;
         const questionIndex = Math.floor(Math.random() * availableQuesions.length);
         currentQuestion = availableQuesions[questionIndex];
         question.innerText = currentQuestion.question;
