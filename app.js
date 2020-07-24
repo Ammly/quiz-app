@@ -154,10 +154,6 @@ db.on('error', (error) => {
     console.log(error);
 })
 
-
-// Define the port number
-const PORT = 5000;
-
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is listening on port ${PORT}`)
 });
