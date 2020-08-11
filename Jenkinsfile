@@ -6,8 +6,19 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'sudo ln -s /usr/bin/nodejs /usr/bin/node'
-        sh 'npm install'
+        sh 'echo Building...'
+      }
+    }
+    
+    stage('Test') {
+      steps {
+        sh 'echo Testing...'
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        sh 'echo Deploying...'
       }
     }
 
